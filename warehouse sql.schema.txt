@@ -1,0 +1,31 @@
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username VARCHAR(100),
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255),
+    role VARCHAR(20)
+);
+
+CREATE TABLE products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_name VARCHAR(255),
+    sku VARCHAR(100) UNIQUE,
+    category VARCHAR(100),
+    price FLOAT,
+    stock_quantity INTEGER
+);
+
+CREATE TABLE suppliers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    supplier_name VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(50)
+);
+
+CREATE TABLE stock_history (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    product_id INTEGER,
+    movement_type VARCHAR(20),
+    quantity INTEGER,
+    FOREIGN KEY(product_id) REFERENCES products(id)
+);
